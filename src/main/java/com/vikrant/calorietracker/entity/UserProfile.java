@@ -20,8 +20,12 @@ public class UserProfile {
     private int dailyCaloriesGoal;
     private int dailyDeficitGoal;
     private int dailyWaterGoalMl;
+
+    @Enumerated(EnumType.STRING)
     private ActivityLevel activityLevel;
     private double bmr;
+
+    @Enumerated(EnumType.STRING)
     private Gender gender;
     private LocalDateTime createdAt;
 }
