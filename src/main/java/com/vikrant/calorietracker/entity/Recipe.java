@@ -16,9 +16,9 @@ public class Recipe {
     private String name;
     private String description;
     private int defaultServing;
-    private boolean isCustom;
-    private boolean isVerified;
-    private boolean isAiGenerated;
+    private boolean custom;
+    private boolean verified;
+    private boolean aiGenerated;
     private LocalDateTime createdAt;
     private LocalDateTime updatedAt;
 }

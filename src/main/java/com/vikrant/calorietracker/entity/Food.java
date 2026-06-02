@@ -31,8 +31,8 @@ public class Food {
     private Unit defaultUnit;
 
     // Flags
-    private boolean isVerified; // manually checked nutrition?
-    private boolean isCustom;   // user-added or preloaded?
+    private boolean verified; // manually checked nutrition?
+    private boolean custom;   // user-added or preloaded?
 
     // Timestamps
     private LocalDateTime createdAt;
