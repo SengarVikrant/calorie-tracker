@@ -6,8 +6,9 @@ import lombok.Data;
 import java.time.LocalDateTime;
 
 @Data
-@Table(name = "food")
-@Entity
+@Table(name = "food", uniqueConstraints = {
+        @UniqueConstraint(columnNames = "name")
+})@Entity
 public class Food {
     @Id
     @GeneratedValue(strategy = GenerationType.IDENTITY)
@@ -26,9 +27,6 @@ public class Food {
 
     private Double density;
 
-    @ManyToOne
-    @JoinColumn(name = "default_unit_id")
-    private Unit defaultUnit;
 
     // Flags
     private boolean verified; // manually checked nutrition?
