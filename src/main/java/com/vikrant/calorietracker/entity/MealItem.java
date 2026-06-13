@@ -18,14 +18,14 @@ public class MealItem {
     @ManyToOne
     @JoinColumn(name = "food_id")
     private Food food;
+    @ManyToOne
+    @JoinColumn(name = "unit_id")
+    private Unit unit;
 
     @ManyToOne
     @JoinColumn(name = "recipe_id")
     private Recipe recipe;
 
-    @ManyToOne
-    @JoinColumn(name = "unit_id")
-    private Unit unit;
 
     private double quantity;
 

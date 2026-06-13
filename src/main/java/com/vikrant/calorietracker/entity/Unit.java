@@ -15,5 +15,9 @@ public class Unit {
 
     @Enumerated(EnumType.STRING)
     private UnitType unitType;
+
+    @Enumerated(EnumType.STRING)
+    private UnitSize size;
+
     private Double amountInMl;
 }

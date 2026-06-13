@@ -18,6 +18,9 @@ public class Food {
     @Enumerated(EnumType.STRING)
     private UnitType unitType;
 
+    @Enumerated(EnumType.STRING)
+    private FoodState foodState;
+
     // Nutrition per 100g
     private double caloriesPer100g;
     private double proteinPer100g;

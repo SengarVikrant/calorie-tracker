@@ -1,6 +1,7 @@
 package com.vikrant.calorietracker.service;
 
 
+import com.vikrant.calorietracker.dto.NutritionSnapshot;
 import com.vikrant.calorietracker.entity.Food;
 import com.vikrant.calorietracker.entity.FoodUnit;
 import com.vikrant.calorietracker.repository.FoodRepository;
@@ -18,7 +19,8 @@ public class CalorieCalculationService {
     @Autowired
     private FoodUnitRepository foodUnitRepository;
 
-    public double calculateCalorie(Long food_id, Long unit_id, double quantity) {
+
+    public NutritionSnapshot calculateNutrition(Long food_id, Long unit_id, double quantity) {
         Food food = foodRepository.findById(food_id)
                 .orElseThrow(() -> new RuntimeException("Food not found with id: " + food_id));
 
@@ -26,22 +28,35 @@ public class CalorieCalculationService {
                 .findByFoodIdAndUnitId(food_id, unit_id)
                 .orElseThrow(() -> new RuntimeException("FoodUnit not found"));
 
-        double caloriePer100Gm = food.getCaloriesPer100g();
         double volume;
-        double weight;
+        double weight = 0;
         double calories;
+        double protein;
+        double carbs;
+        double fat;
+        double fiber;
 
         if (foodUnit.getAmountInMl() != null){
             volume =  foodUnit.getAmountInMl() * quantity;
             weight = volume * food.getDensity();
-            calories = (weight/100) * caloriePer100Gm;
-
         }else{
             weight = quantity * foodUnit.getAmountInGrams();
-            calories = (weight/100) * caloriePer100Gm;
+
 
         }
+        calories = (weight/100) * food.getCaloriesPer100g();
+        protein = (weight/100) * food.getProteinPer100g();
+        carbs = (weight/100) * food.getCarbsPer100g();
+        fat = (weight/100) * food.getFatPer100g();
+        fiber = (weight/100) * food.getFiberPer100g();
 
-        return calories;
+        NutritionSnapshot snapshot = new NutritionSnapshot();
+        snapshot.setCalories(calories);
+        snapshot.setProtein(protein);
+        snapshot.setCarbs(carbs);
+        snapshot.setFiber(fiber);
+        snapshot.setFat(fat);
+
+        return snapshot;
     }
 }
