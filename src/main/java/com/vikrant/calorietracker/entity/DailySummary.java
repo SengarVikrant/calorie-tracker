@@ -19,7 +19,7 @@ public class DailySummary {
     private double caloriesBurned;
     private double netCalorieBalance;
     private boolean deficitAchieved;
-    private int waterIntakeMl;
+    private double waterIntakeMl;
     private boolean waterGoalMet;
     private int totalExerciseMins;
     private Double weightKg;

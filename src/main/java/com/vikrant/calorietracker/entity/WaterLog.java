@@ -14,7 +14,7 @@ public class WaterLog {
     @GeneratedValue(strategy = GenerationType.IDENTITY)
     private Long id;
 
-    private int amountInMl;
+    private double amountInMl;
     private LocalDateTime loggedAt;
     private String notes;
 
