@@ -11,4 +11,5 @@ import java.util.List;
 public interface WeightLogRepository extends JpaRepository<WeightLog, Long> {
     @Query("SELECT w FROM WeightLog w WHERE DATE(w.loggedAt) = :date ORDER BY w.loggedAt DESC")
     List<WeightLog> findByDate(@Param("date") LocalDate date);
+    List<WeightLog> findTopByOrderByLoggedAtDesc();
 }
